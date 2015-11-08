@@ -8,6 +8,11 @@
     <style name="LinearLayoutTheme" parent="AppTheme">
         <item name="android:textColor">@color/red</item>
         <item name="android:background">@color/green</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
+    </style>
+
+    <style name="ButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/stateful_button</item>
     </style>
 
 </resources>
