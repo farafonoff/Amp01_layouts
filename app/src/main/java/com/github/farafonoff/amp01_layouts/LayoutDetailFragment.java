@@ -5,7 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
+
+import com.github.farafonoff.amp01_layouts.layouts.GridViewAdapter;
 
 
 /**
@@ -57,6 +60,18 @@ public class LayoutDetailFragment extends Fragment {
             case "grid":
                 layoutId = R.layout.fragment_layout_grid;
                 break;
+            case "frame":
+                layoutId = R.layout.fragment_layout_frame;
+                break;
+            case "absolute":
+                layoutId = R.layout.fragment_layout_absolute;
+                break;
+            case "table":
+                layoutId = R.layout.fragment_layout_table;
+                break;
+            case "grid_view":
+                layoutId = R.layout.fragment_layout_grid_view;
+                break;
         }
 
         View rootView = inflater.inflate(layoutId, container, false);
@@ -64,6 +79,10 @@ public class LayoutDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.layout_detail)).setText(mItem);
+        }
+        if (layoutId==R.layout.fragment_layout_grid_view) {
+            GridView view = ((GridView) rootView.findViewById(R.id.layout_grid_view));
+            view.setAdapter(new GridViewAdapter());
         }
 
         return rootView;
