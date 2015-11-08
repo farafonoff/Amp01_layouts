@@ -7,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_detail"
-        android:gravity="center"
         />
 
     <Button
@@ -15,5 +14,5 @@
         android:layout_height="wrap_content"
         android:text="@string/button_name"
         android:id="@+id/button"
-        android:layout_gravity="bottom" />
+        android:layout_y="30dp" />
 </AbsoluteLayout>

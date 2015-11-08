@@ -5,4 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="LinearLayoutTheme" parent="AppTheme">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:background">@color/green</item>
+    </style>
+
 </resources>
