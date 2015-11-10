@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Програмулинка</string>
+    <string name="title_layout_detail">Заголовочек</string>
+    <string name="button_name">Кнопочка</string>
+    <string name="other_text">текстик</string>
+</resources>
