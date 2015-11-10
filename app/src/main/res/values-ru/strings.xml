@@ -4,4 +4,6 @@
     <string name="title_layout_detail">Заголовочек</string>
     <string name="button_name">Кнопочка</string>
     <string name="other_text">текстик</string>
+    <string name="delete_all">Delete all</string>
+    <string name="new_item">New Item</string>
 </resources>

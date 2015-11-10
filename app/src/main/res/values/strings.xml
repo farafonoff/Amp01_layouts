@@ -3,4 +3,6 @@
     <string name="title_layout_detail">Layout Detail</string>
     <string name="button_name">New Button</string>
     <string name="other_text">other text</string>
+    <string name="delete_all">Delete all</string>
+    <string name="new_item">New Item</string>
 </resources>

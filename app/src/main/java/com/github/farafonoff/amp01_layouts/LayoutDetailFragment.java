@@ -2,13 +2,24 @@ package com.github.farafonoff.amp01_layouts;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.farafonoff.amp01_layouts.layouts.GridViewAdapter;
+import com.github.farafonoff.amp01_layouts.layouts.LayoutItemsList;
+import com.github.farafonoff.amp01_layouts.layouts.MyListAdapter;
+
+import java.util.Arrays;
 
 
 /**
@@ -78,11 +89,47 @@ public class LayoutDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.layout_detail)).setText(mItem);
+            TextView layoutNameTv = ((TextView) rootView.findViewById(R.id.layout_detail));
+            if (layoutNameTv!=null) {
+                layoutNameTv.setText(mItem);
+            }
         }
+
+        if (layoutId==R.layout.fragment_layout_linear) {
+            ListView view = ((ListView) rootView.findViewById(R.id.listView));
+            Button addItemButton = ((Button) rootView.findViewById(R.id.insertButton));
+            EditText text = ((EditText) rootView.findViewById(R.id.newItemName));
+            Button deleteAllButton = ((Button) rootView.findViewById(R.id.deleteButton));
+            view.setAdapter(new MyListAdapter());
+        }
+
         if (layoutId==R.layout.fragment_layout_grid_view) {
             GridView view = ((GridView) rootView.findViewById(R.id.layout_grid_view));
             view.setAdapter(new GridViewAdapter());
+        }
+
+        if (layoutId==R.layout.fragment_layout_frame) {
+            ViewPager view = ((ViewPager) rootView.findViewById(R.id.viewPager));
+            view.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
+                @Override
+                public int getCount() {
+                    return LayoutItemsList.layoutNames.length;
+                }
+
+                @Override
+                public Fragment getItem(int position) {
+                    Bundle arguments = new Bundle();
+                    arguments.putString(LayoutDetailFragment.ARG_ITEM_ID, LayoutItemsList.layoutNames[position]);
+                    LayoutDetailFragment fragment = new LayoutDetailFragment();
+                    fragment.setArguments(arguments);
+                    return fragment;
+                }
+
+                @Override
+                public CharSequence getPageTitle(int position) {
+                    return LayoutItemsList.layoutNames[position];
+                }
+            });
         }
 
         return rootView;
