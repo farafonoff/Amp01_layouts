@@ -8,6 +8,7 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -28,6 +29,13 @@ import com.github.farafonoff.amp01_layouts.layouts.MyListAdapter;
  * on handsets.
  */
 public class LayoutDetailFragment extends Fragment {
+
+    static final String[] letters = new String[] {
+            "A", "B", "C", "D", "E",
+            "F", "G", "H", "I", "J",
+            "K", "L", "M", "N", "O",
+            "P", "Q", "R", "S", "T",
+            "U", "V", "W", "X", "Y", "Z"};
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -127,7 +135,7 @@ public class LayoutDetailFragment extends Fragment {
 
         if (layoutId==R.layout.fragment_layout_grid_view) {
             GridView view = ((GridView) rootView.findViewById(R.id.layout_grid_view));
-            view.setAdapter(new GridViewAdapter());
+            view.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, letters));
         }
 
         if (layoutId==R.layout.fragment_layout_frame) {
@@ -140,7 +148,7 @@ public class LayoutDetailFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         getChildFragmentManager().beginTransaction()
-                                .replace(R.id.frameLayout, buildByName((String)v.getTag()))
+                                .replace(R.id.frameLayout, buildByName((String) v.getTag()))
                                 .commit();
                     }
                 });

@@ -12,6 +12,7 @@ import org.w3c.dom.Text;
 /**
  * Created by Artem_Farafonov on 11/8/2015.
  */
+@Deprecated
 public class GridViewAdapter extends BaseAdapter {
     @Override
     public int getCount() {

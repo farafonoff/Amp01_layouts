@@ -15,6 +15,6 @@
         android:layout_height="match_parent"
         android:id="@+id/layout_grid_view"
         android:layout_below="@+id/layout_detail"
-        android:numColumns="auto_fit">
+        android:numColumns="4">
     </GridView>
 </RelativeLayout>
