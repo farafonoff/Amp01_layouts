@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,11 +97,31 @@ public class LayoutDetailFragment extends Fragment {
         }
 
         if (layoutId==R.layout.fragment_layout_linear) {
-            ListView view = ((ListView) rootView.findViewById(R.id.listView));
+            final ListView view = ((ListView) rootView.findViewById(R.id.listView));
+            view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             Button addItemButton = ((Button) rootView.findViewById(R.id.insertButton));
-            EditText text = ((EditText) rootView.findViewById(R.id.newItemName));
+            final EditText text = ((EditText) rootView.findViewById(R.id.newItemName));
             Button deleteAllButton = ((Button) rootView.findViewById(R.id.deleteButton));
-            view.setAdapter(new MyListAdapter());
+            final MyListAdapter myAdapter = new MyListAdapter();
+            myAdapter.add("test");
+            myAdapter.add("test1");
+            view.setAdapter(myAdapter);
+            addItemButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String newTextItem = text.getText().toString();
+                    if (!newTextItem.isEmpty()) {
+                        myAdapter.add(newTextItem);
+                    }
+                }
+            });
+            deleteAllButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SparseBooleanArray checks = view.getCheckedItemPositions();
+                    myAdapter.removeAll(checks);
+                }
+            });
         }
 
         if (layoutId==R.layout.fragment_layout_grid_view) {
