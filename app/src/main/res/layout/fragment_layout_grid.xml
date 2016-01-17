@@ -4,7 +4,8 @@
     grid:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent" android:id="@+id/layout_grid"
     grid:columnCount="2"
-    grid:alignmentMode="alignBounds">
+    grid:alignmentMode="alignBounds"
+    android:theme="@style/GridLayoutTheme">
 
     <TextView
         android:layout_width="match_parent"

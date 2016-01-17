@@ -11,8 +11,20 @@
         <item name="android:buttonStyle">@style/ButtonStyle</item>
     </style>
 
+    <style name="GridLayoutTheme" parent="AppTheme">
+        <item name="android:textColor">@color/Navy</item>
+        <item name="android:background">@color/Wheat</item>
+        <item name="android:buttonStyle">@style/ButtonStyle2</item>
+    </style>
+
     <style name="ButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/stateful_button</item>
     </style>
+
+    <style name="ButtonStyle2" parent="@android:style/Widget.Button">
+        <item name="android:background">@color/Pink</item>
+        <item name="android:textColor">@color/Crimson</item>
+    </style>
+
 
 </resources>
