@@ -2,25 +2,23 @@ package com.github.farafonoff.amp01_layouts;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.farafonoff.amp01_layouts.layouts.GridViewAdapter;
 import com.github.farafonoff.amp01_layouts.layouts.LayoutItemsList;
 import com.github.farafonoff.amp01_layouts.layouts.MyListAdapter;
-
-import java.util.Arrays;
 
 
 /**
@@ -74,6 +72,9 @@ public class LayoutDetailFragment extends Fragment {
                 break;
             case "frame":
                 layoutId = R.layout.fragment_layout_frame;
+                break;
+            case "viewpager":
+                layoutId = R.layout.fragment_layout_viewpager;
                 break;
             case "absolute":
                 layoutId = R.layout.fragment_layout_absolute;
@@ -130,6 +131,24 @@ public class LayoutDetailFragment extends Fragment {
         }
 
         if (layoutId==R.layout.fragment_layout_frame) {
+            LinearLayout buttonz = ((LinearLayout) rootView.findViewById(R.id.buttonsLayout));
+            for(final String layoutName:LayoutItemsList.layoutNames) {
+                Button btn = new Button(getContext());
+                btn.setText(layoutName);
+                btn.setTag(layoutName);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getChildFragmentManager().beginTransaction()
+                                .replace(R.id.frameLayout, buildByName((String)v.getTag()))
+                                .commit();
+                    }
+                });
+                buttonz.addView(btn);
+            }
+        }
+
+        if (layoutId==R.layout.fragment_layout_viewpager) {
             ViewPager view = ((ViewPager) rootView.findViewById(R.id.viewPager));
             view.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
                 @Override
@@ -139,11 +158,7 @@ public class LayoutDetailFragment extends Fragment {
 
                 @Override
                 public Fragment getItem(int position) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(LayoutDetailFragment.ARG_ITEM_ID, LayoutItemsList.layoutNames[position]);
-                    LayoutDetailFragment fragment = new LayoutDetailFragment();
-                    fragment.setArguments(arguments);
-                    return fragment;
+                    return buildByName(LayoutItemsList.layoutNames[position]);
                 }
 
                 @Override
@@ -154,5 +169,13 @@ public class LayoutDetailFragment extends Fragment {
         }
 
         return rootView;
+    }
+
+    private Fragment buildByName(String name) {
+        Bundle arguments = new Bundle();
+        arguments.putString(LayoutDetailFragment.ARG_ITEM_ID, name);
+        LayoutDetailFragment fragment = new LayoutDetailFragment();
+        fragment.setArguments(arguments);
+        return fragment;
     }
 }
