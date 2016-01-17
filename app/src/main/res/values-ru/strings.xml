@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Програмулинка</string>
-    <string name="title_layout_detail">Заголовочек</string>
-    <string name="button_name">Кнопочка</string>
-    <string name="other_text">текстик</string>
-    <string name="delete_all">Delete all</string>
-    <string name="new_item">New Item</string>
+    <string name="app_name">Расположения элементов</string>
+    <string name="title_layout_detail">Заголовок активности</string>
+    <string name="button_name">Кнопка</string>
+    <string name="other_text">Еще текст</string>
+    <string name="delete_all">Удалить выделенные</string>
+    <string name="new_item">Добавить</string>
 </resources>
