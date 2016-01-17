@@ -1,31 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:id="@+id/layout_grid">
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
+    grid:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:id="@+id/layout_grid"
+    grid:columnCount="2"
+    grid:alignmentMode="alignBounds">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_detail"
         android:gravity="center"
-        android:layout_rowWeight="2"
+        grid:layout_rowWeight="2"
+        grid:layout_gravity="fill"
+        grid:layout_column="0"
+        grid:layout_columnSpan="2"
         />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_name"
-        android:id="@+id/button"
-        android:layout_gravity="bottom"
-        android:layout_rowWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_columnWeight="1"
+        grid:layout_row="1"
+        grid:layout_column="0"
+        grid:layout_rowWeight="1"
         />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_name"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:layout_columnWeight="1"
+        grid:layout_row="1"
+        grid:layout_column="1"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_name"
+        grid:layout_gravity="fill"
+        grid:layout_columnWeight="1"
+        grid:layout_row="2"
+        grid:layout_column="0"
+        grid:layout_rowWeight="1"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_name"
+        grid:layout_gravity="fill"
+        grid:layout_rowWeight="1"
+        grid:layout_columnWeight="1"
+        grid:layout_row="2"
+        grid:layout_column="1"
+        />
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/layout_detail_2"
         android:text="@string/other_text"
         android:gravity="center"
-        android:layout_rowWeight="1"
+        grid:layout_gravity="fill"
+        grid:layout_column="0"
+        grid:layout_columnSpan="2"
+        grid:layout_rowWeight="1"
         />
-</GridLayout>
+</android.support.v7.widget.GridLayout>
