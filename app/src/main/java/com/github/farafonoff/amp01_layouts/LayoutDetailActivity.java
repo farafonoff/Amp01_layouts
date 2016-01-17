@@ -1,10 +1,16 @@
 package com.github.farafonoff.amp01_layouts;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
+
+import com.github.farafonoff.amp01_layouts.layouts.LayoutItemsList;
+
+import java.util.Locale;
 
 /**
  * An activity representing a single Layout detail screen. This
@@ -38,8 +44,18 @@ public class LayoutDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(LayoutDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(LayoutDetailFragment.ARG_ITEM_ID));
+            String layout_id = getIntent().getStringExtra(LayoutDetailFragment.ARG_ITEM_ID);
+            String locale = LayoutItemsList.getLocaleForLayout(layout_id);
+
+            Resources res = getResources();
+            // Change locale settings in the app.
+            DisplayMetrics dm = res.getDisplayMetrics();
+            android.content.res.Configuration conf = res.getConfiguration();
+            conf.locale = new Locale(locale);
+            res.updateConfiguration(conf, dm);
+
+            arguments.putString(LayoutDetailFragment.ARG_ITEM_ID, layout_id);
+
             LayoutDetailFragment fragment = new LayoutDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()

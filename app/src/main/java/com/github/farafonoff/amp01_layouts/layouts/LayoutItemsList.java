@@ -9,4 +9,13 @@ import com.github.farafonoff.amp01_layouts.LayoutDetailFragment;
  */
 public class LayoutItemsList {
     public static String[] layoutNames = new String[]{"linear", "grid", "frame", "absolute", "table", "grid_view", "viewpager"};
+    public static String getLocaleForLayout(String layout) {
+        if (layout.equals(layoutNames[0])) {
+            return "ru";
+        }
+        if (layout.equals(layoutNames[1])) {
+            return "en";
+        }
+        return "";
+    }
 }
